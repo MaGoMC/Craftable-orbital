@@ -5,7 +5,7 @@ base { archivesName = 'mago-orbital-cannon' }
 repositories { maven { url = 'https://maven.fabricmc.net/' }; mavenCentral() }
 dependencies {
  minecraft 'com.mojang:minecraft:1.21.11'
- mappings loom.officialMojangMappings()
+ mappings 'net.fabricmc:yarn:1.21.11+build.1:v2'
  modImplementation 'net.fabricmc:fabric-loader:0.18.4'
  modImplementation 'net.fabricmc.fabric-api:fabric-api:0.141.1+1.21.11'
 }
