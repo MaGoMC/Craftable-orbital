@@ -15,7 +15,11 @@
     "id": "minecraft:fishing_rod",
     "count": 1,
     "components": {
-      "minecraft:custom_name": "{\"text\":\"Stab Shot\",\"color\":\"gold\",\"italic\":false}",
+      "minecraft:custom_name": {
+        "text": "Stab Shot",
+        "color": "gold",
+        "italic": false
+      },
       "minecraft:custom_data": {
         "mago_orbital": "stab"
       }
