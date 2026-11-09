@@ -1,0 +1,50 @@
+Кюєѕ   A § #com/mcclip/orbitalstrike/BitmapFont   java/lang/Object   BitmapFont.java java/awt/RenderingHints$Key   java/awt/RenderingHints   Key GLYPH_HEIGHT I    FONT Ljava/awt/Font; <init> ()V  
+   this %Lcom/mcclip/orbitalstrike/BitmapFont; 
+renderText %(Ljava/lang/String;I)Ljava/util/List; )(Ljava/lang/String;I)Ljava/util/List<[D>; text scale java/util/ArrayList  
+   java/awt/image/BufferedImage   (III)V   
+  ! createGraphics ()Ljava/awt/Graphics2D; # $
+  %  	  ' java/awt/Graphics2D  )  setFont (Ljava/awt/Font;)V + ,
+ * - getFontMetrics ()Ljava/awt/FontMetrics; / 0
+ * 1 java/awt/FontMetrics  3 
+stringWidth (Ljava/lang/String;)I 5 6
+ 4 7 	getHeight ()I 9 :
+ 4 ;  dispose = 
+ * > java/lang/String  @ java/awt/Color  B WHITE Ljava/awt/Color; D E	 C F setColor (Ljava/awt/Color;)V H I
+ * J fillRect  (IIII)V L M
+ * N BLACK P E	 C Q KEY_TEXT_ANTIALIASING Ljava/awt/RenderingHints$Key; S T	 	 U VALUE_TEXT_ANTIALIAS_OFF Ljava/lang/Object; W X	 	 Y setRenderingHint 2(Ljava/awt/RenderingHints$Key;Ljava/lang/Object;)V [ \
+ * ] 	getAscent _ :
+ 4 ` 
+drawString (Ljava/lang/String;II)V b c
+ * d getRGB (II)I f g
+  h яяя add (Ljava/lang/Object;)Z k l
+  m@        iterator ()Ljava/util/Iterator; q r
+  s java/util/Iterator  u  hasNext ()Z w x
+ v y next ()Ljava/lang/Object; { |
+ v } [D   rgb col row p Ljava/lang/String; pts Ljava/util/ArrayList<[D>; Ljava/util/ArrayList; 
+measureImg Ljava/awt/image/BufferedImage; measureG Ljava/awt/Graphics2D; fm Ljava/awt/FontMetrics; 	textWidth 
+textHeight img g halfW D halfH <clinit> 
+java/awt/Font  — 	SansSerif ™  c
+  › 
+ConstantValue Code LineNumberTable LocalVariableTable 
+StackMapTable LocalVariableTypeTable 	Signature MethodParameters InnerClasses 
+SourceFile !       
+   ќ    
+           ћ   /     *· ±    џ                     	    ћ  У    9» Y· M» Y· "N-¶ &:І (¶ .¶ 2:*¶ 86¶ <6 ¶ ?ћ  ќ ,°» Y · ":¶ &:		І G¶ K	 ¶ O	І R¶ K	І (¶ .	І VІ Z¶ ^	*¶ a¶ e	¶ ?6
+
+ ў G6
+
+ў 7
+
+¶ ij~6™ § ,ј Y
+h‡RY
+h‡R¶ nW„
+§яИ„
+§яёh‡ oo9
+ h‡ oo9,¶ t:№ z ™ (№ ~ А Ђ:1
+gR1gR§яФ,°    Ў   B 
+я G   A      *  4  ю W    *ь 	ь ъ ъ ъ ю   vъ . џ   † !          "  )  1  8  =  G  I  X   _ ! g " r # z $ ‚ % Ќ & ™ ' ћ ( Ё ) І * А + И , а ) ж ( м / ч 0 1 2) 34 47 5     ў  А   Ѓ   « ; ‚  
+ Ў K ѓ  
+  „    9  …    9    1 † €  % ‰ Љ   ‹ Њ  ) Ќ Ћ  1 Џ   8 ђ    X б ‘ Љ  _ Ъ ’ Њ 	 ч B “ ” 
+ 7 • ”  ў     1 † ‡  Ј     ¤   	        –   ћ   (      » Yљ· њі (±    џ         Ґ   
+    	 
+	 ¦    
