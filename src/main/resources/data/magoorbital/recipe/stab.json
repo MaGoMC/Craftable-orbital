@@ -17,7 +17,10 @@
       "minecraft:custom_data": {
         "mago_orbital": "stab"
       },
-      "minecraft:custom_name": "{\"text\": \"Stab Shot Rod\", \"color\": \"aqua\", \"italic\": false}"
-    }
+      "minecraft:custom_name": {
+  "text": "Stab",
+  "color": "gold",
+  "italic": false
+}
   }
 }
