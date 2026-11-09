@@ -58,7 +58,7 @@ public final class OrbitalMod implements ModInitializer {
             try {
                 if (type.equals("nuke")) {
                     // Actual bundled OrbitalStrike+ method; 13 original TNT rings.
-                    nuke.invoke(null, sw, pos.getX(), pos.getY(), pos.getZ(), 13);
+                    nuke.invoke(null, sw, pos.getX(), Math.min(sw.getTopYInclusive() - 4, pos.getY() + 75), pos.getZ(), 13);
                 } else {
                     // Actual bundled OrbitalStrike+ Stab method, using its native x/z arguments.
                     stab.invoke(null, sw, pos.getX(), pos.getZ());
