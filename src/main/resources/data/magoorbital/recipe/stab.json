@@ -1,28 +1,23 @@
-
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " T ",
-    "DFD",
+    "DRD",
     " T "
   ],
   "key": {
     "D": "minecraft:diamond_block",
     "T": "minecraft:tnt",
-    "F": "minecraft:fishing_rod"
+    "R": "minecraft:fishing_rod"
   },
   "result": {
     "id": "minecraft:fishing_rod",
     "count": 1,
     "components": {
-      "minecraft:custom_name": {
-        "text": "Stab Shot",
-        "color": "gold",
-        "italic": false
-      },
       "minecraft:custom_data": {
         "mago_orbital": "stab"
-      }
+      },
+      "minecraft:custom_name": "{\"text\": \"Stab Shot Rod\", \"color\": \"aqua\", \"italic\": false}"
     }
   }
 }
