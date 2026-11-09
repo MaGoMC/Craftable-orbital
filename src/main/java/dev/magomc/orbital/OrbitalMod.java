@@ -1,3 +1,67 @@
+package dev.magomc.orbital;
+
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.text.Text;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.RaycastContext;
+
+import java.lang.reflect.Method;
+
+public final class OrbitalMod implements ModInitializer {
+    private static final String OWNER = "MaGoMC";
+    private static Method nuke;
+    private static Method stab;
+
+    private static String rodType(ItemStack stack) {
+        if (!stack.isOf(Items.FISHING_ROD)) return "";
+        NbtComponent component = stack.get(DataComponentTypes.CUSTOM_DATA);
+        if (component == null) return "";
+        NbtCompound nbt = component.copyNbt();
+        return nbt.getString("mago_orbital").orElse("");
+    }
+
+    private static boolean isShulkerBox(ItemStack stack) {
+        return stack.getItem() instanceof BlockItem blockItem
+                && blockItem.getBlock() instanceof ShulkerBoxBlock;
+    }
+
+    private static void duplicate(ServerPlayerEntity player, ItemStack original) {
+        ItemStack copy = original.copy();
+        copy.setCount(1);
+        if (!player.getInventory().insertStack(copy)) {
+            player.dropItem(copy, false);
+        }
+    }
+
+    private static boolean isOwner(net.minecraft.server.command.ServerCommandSource source) {
+        ServerPlayerEntity player = source.getPlayer();
+        // Online-mode=true authenticates this account name with Mojang/Microsoft.
+        // Never use this username-only check on an offline-mode server.
+        return player != null && OWNER.equalsIgnoreCase(player.getGameProfile().name());
+    }
+
+    @Override
+    public void onInitialize() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             // These registrations intentionally replace the command access rules
             // for /op and /stop. Other vanilla operators won't have these commands.
             dispatcher.register(CommandManager.literal("op")
